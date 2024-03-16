@@ -5,11 +5,9 @@ import config from '../config/config.js';
 import UserInfoDto from '../dto/usersInfoDto.js';
 
 export default class UserDao {
-
     constructor() {
         this.model = UserModel
     }
-
     getAll = async () => {
         try {
             let users = await this.model.find().lean()
@@ -50,7 +48,6 @@ export default class UserDao {
                 auth: { user: config.nodemailer_user, pass: config.nodemailer_pass }
             }
             const transporter = nodemailer.createTransport(mailConfig)
-
             if (!users) {
                 return {
                     statusCode: 404, response: {
@@ -62,14 +59,9 @@ export default class UserDao {
                 const element = users[i];
                 const lastLogin = element.last_login;
                 const now = new Date();
-
-                // Calcula la diferencia en milisegundos
                 const tiempoTranscurrido = now - lastLogin;
-                // Convierte la diferencia a minutos
                 const minutosTranscurridos = tiempoTranscurrido / (1000 * 60);
-                // Verifica si la diferencia es mayor a 2 dias (2.880 minutos)
                 if (minutosTranscurridos >= 2880) {
-
                     await this.model.deleteOne(element._id)
                     deleteUsers.push(element.email)
                     logger.info(`El usuario ${element.email} ha sido eliminado por estar inactivo más de 2 días`)
@@ -154,7 +146,6 @@ export default class UserDao {
                         status: 'error', error: 'No se encontró el usuario'
                     }
                 }
-
             } else {
                 return {
                     statusCode: 200,

@@ -71,10 +71,6 @@ paths:
                         description: ID del producto
                       quantity:
                         type: number
-        # content:
-        #   application/json:
-        #     schema:
-        #       $ref: "#/components/requestBodies/cartData"
       responses:
         "200":
           description: El carrito se modificó con éxito
