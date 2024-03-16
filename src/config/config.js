@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import program from '../utils/commands.js'
 const opts = program.opts();
-dotenv.config({ path: opts.mode === 'production' ? './.env.production' : './.env.development'});
+dotenv.config({ path: opts.mode === 'development' ? './.env.production' : './.env.development'});
 export default {
     admin_email: process.env.ADMIN_EMAIL,
     admin_password: process.env.ADMIN_PASSWORD,
