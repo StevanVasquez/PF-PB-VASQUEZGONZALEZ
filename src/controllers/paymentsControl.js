@@ -40,7 +40,7 @@ const createSession = async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: 'payment',
-            success_url: config.environment === 'production' ? `http://${req.hostname}:${config.port}/api/carts/${cid}/purchase` : `http://${req.hostname}/api/carts/${cid}/purchase`,
+            success_url: config.environment === 'development' ? `http://${req.hostname}:${config.port}/api/carts/${cid}/purchase` : `http://${req.hostname}/api/carts/${cid}/purchase`,
             cancel_url: config.environment === 'development' ? `http://${req.hostname}:${config.port}/api/payments/cancel` : `http://${req.hostname}/api/payments/cancel`
         })
         res.status(200).json({ sessionId: session.id });

@@ -13,7 +13,7 @@ export default {
     callbackUrlGit: process.env.CLIENT_URL_GITHUB,
     persistence: process.env.PERSISTENCE,
     environment: process.env.ENVIRONMENT,
-    port: opts.d || process.env.PORT || 8080,
+    port: opts.p || process.env.PORT || 8080,
     nodemailer_user: process.env.MAILER_USER,
     nodemailer_pass: process.env.MAILER_PASS,
     stripe_key: process.env.STRIPE_KEY,
