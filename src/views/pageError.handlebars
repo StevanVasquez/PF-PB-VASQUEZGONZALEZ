@@ -1,0 +1,17 @@
+<!-- component -->
+<div class="flex flex-col justify-center mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-auto min-h-screen mb-6">
+    <div class="flex flex-col mx-auto">
+        <img class="flex w-48 md:w-96 border-orange-900 border-solid rounded-2xl border-8" src="https://www.acceseo.com/wp-content/uploads/2020/11/guia-errores-404.png"/>
+    </div>
+    <div class=" mx-auto mt-8">
+        <h1 class="my-2 text-slate-600 font-bold text-lg">Error.. "{{error}}"</h1>
+        <p class="my-2 text-slate-600 text-lg">Lo siento por eso! Visitá el inicio de la página para encontrar lo que estabas buscando! </p>
+        <a href="/"><button class="sm:w-auto lg:w-auto my-2 rounded md py-4 px-8 text-center bg-gray-700 text-neutral-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">Ir a inicio</button></a>
+        <button class="sm:w-auto lg:w-auto my-2 rounded md py-4 px-8 text-center bg-gray-700 text-neutral-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50" type="button" id="go-back">Volver a la página anterior</button>
+    </div>
+</div>
+<script>
+    document.getElementById("go-back").addEventListener("click", () => {
+        history.back();
+    });
+</script>

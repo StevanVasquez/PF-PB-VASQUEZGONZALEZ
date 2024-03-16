@@ -1,0 +1,81 @@
+<div class="bg-slate-400 min-h-screen flex flex-col">
+    <div class="container md:max-w-lg md:mt-4 mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <div class="bg-zinc-700 px-6 py-8 rounded shadow-md text-black w-full">
+            <form class="form" method="post" id="form-data">
+                <h1 class="mb-8 text-3xl text-center text-zinc-500">Actualizar producto</h1>
+                <h3 class="text-zinc-500">ID</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="pid" required placeholder="Título" />
+                <h3 class="text-zinc-500">Titulo</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="title" required placeholder="Título" />
+                <h3 class="text-zinc-500">Descripcion</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="description" required placeholder="Descripción" />
+                <h3 class="text-zinc-500">Precio</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="price" required placeholder="Precio" />
+                <h3 class="text-zinc-500">Codigo</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="code" required placeholder="Codigo" />
+                <h3 class="text-zinc-500">Stock</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="stock" required placeholder="Stock" />
+                <h3 class="text-zinc-500">Categoria</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="category" required placeholder="Categoría" />
+                <h3 class="text-zinc-500">Thumbnail</h3>
+                <input type="text" class="bg-slate-500 block border border-grey-light w-full p-3 rounded mb-4" id="thumbnail" required placeholder="Imagen" />
+                <button type="button" onClick="updateProduct()" class="w-full text-center py-3 rounded text-slate-400 bg-gray-600 hover:bg-gray-700 focus:outline-none my-1">Actualizar producto</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function swalPermission() {
+        Swal.fire({
+            title: `Error de permisos`,
+            text: "No tiene permisos para realizar esta acción",
+            icon: "warning"
+        })
+    }
+    function swalError(error) {
+        Swal.fire({
+            title: `Error al intentar la acción`,
+            text: error,
+            icon: "warning"
+        })
+    }
+    function swalUpdate() {
+        Swal.fire({
+            title: `Producto modificado!!`,
+            text: "Se modificó el producto correctamente",
+            icon: "success"
+        })
+    }
+    function clearForm() {
+        let element = document.getElementById('form-data')
+        element.reset()
+    }
+    function updateProduct() {
+        let pid = document.getElementById('pid').value
+        let title = document.getElementById('title').value
+        let description = document.getElementById('description').value
+        let price = document.getElementById('price').value
+        let code = document.getElementById('code').value
+        let stock = document.getElementById('stock').value
+        let category = document.getElementById('category').value
+        let thumbnail = document.getElementById('thumbnail').value
+        let product = { title, description, price, code, stock, category, thumbnail }
+        if (!title || !description || !price || !code || !stock || !category || !thumbnail) {
+            return swalError('Llene todos los campos del producto para actualizarlo')
+        }
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(product)
+        }
+        fetch(`/api/products/${pid}`, requestOptions)
+            .then(result => result.json())
+            .then(result => {
+                if (result.status === 'error') return swalError(result.error)
+                swalUpdate()
+                clearForm()
+            })
+            .catch(error => swalError('Error inesperado, verifique que los datos sean correctos o intente más tarde!'))
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

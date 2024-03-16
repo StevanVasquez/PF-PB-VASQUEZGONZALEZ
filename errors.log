@@ -1,0 +1,48 @@
+{"level":"error","message":"El usuario sofia@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:29:01.357Z"}
+{"level":"error","message":"El usuario sofia@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:29:16.530Z"}
+{"level":"error","message":"El usuario sofia@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:30:48.296Z"}
+{"level":"error","message":"El usuario sofia@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:33:36.162Z"}
+{"level":"error","message":"El usuario sofia@gmail.com quiso ver el detalle del producto xxxx y este no existe","timestamp":"2024-03-13T18:51:20.336Z"}
+{"level":"error","message":"El usuario sofia@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:51:29.750Z"}
+{"level":"error","message":"El usuario sofia23@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:58:52.265Z"}
+{"level":"error","message":"El usuario sofia23@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:59:14.882Z"}
+{"level":"error","message":"El usuario sofia23@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T18:59:29.472Z"}
+{"level":"error","message":"El usuario sofia23@gmail.com quiso ver el detalle del producto xxxx y este no existe","timestamp":"2024-03-13T19:00:07.763Z"}
+{"level":"error","message":"El usuario sofia23@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T19:00:21.883Z"}
+{"level":"error","message":"El usuario sofia23@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T19:00:35.187Z"}
+{"level":"error","message":"El usuario lav@gmail.com quiso ver el detalle del producto xxxx y este no existe","timestamp":"2024-03-13T19:14:19.240Z"}
+{"level":"error","message":"El usuario lav@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T19:14:34.792Z"}
+{"level":"error","message":"El usuario lav@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T19:18:10.573Z"}
+{"level":"error","message":"El usuario kvasquezgonzalez7@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T19:52:26.859Z"}
+{"level":"error","message":"El usuario kvasquezgonzalez7@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T19:58:54.060Z"}
+{"level":"error","message":"El usuario onix@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T20:07:59.248Z"}
+{"level":"error","message":"El usuario onix@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T20:21:07.831Z"}
+{"level":"error","message":"El usuario lina@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T22:35:54.290Z"}
+{"level":"error","message":"El usuario lina@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T22:48:21.578Z"}
+{"level":"error","message":"El usuario lina@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T22:56:51.121Z"}
+{"level":"error","message":"El usuario lina@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-13T23:08:29.877Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-14T03:10:40.878Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-14T03:13:05.364Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-14T03:15:13.539Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-14T03:36:52.265Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxxx y obtuvo un error","timestamp":"2024-03-14T03:40:46.322Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto xxxx y este no existe","timestamp":"2024-03-14T03:52:59.454Z"}
+{"level":"error","message":"El producto no se pudo crear debido a que el codigo \"123\" ya existe","timestamp":"2024-03-15T15:53:05.175Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto xxx y este no existe","timestamp":"2024-03-15T15:54:10.819Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto xxx y este no existe","timestamp":"2024-03-15T15:55:23.766Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T15:55:31.601Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T15:55:54.869Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T15:56:11.528Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto samsung y este no existe","timestamp":"2024-03-15T15:58:29.518Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto 65f46f00f65b5d644ffc6c09 y este no existe","timestamp":"2024-03-15T15:58:35.838Z"}
+{"code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2024-03-15T18:19:28.338Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto xxx y este no existe","timestamp":"2024-03-15T19:28:33.153Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:28:54.189Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:29:15.429Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:29:51.738Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:30:03.102Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:30:09.659Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:30:28.164Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso acceder al carrito xxx y obtuvo un error","timestamp":"2024-03-15T19:32:03.377Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto l y este no existe","timestamp":"2024-03-15T19:32:18.657Z"}
+{"level":"error","message":"El usuario kev.vas2701@gmail.com quiso ver el detalle del producto 65f4a15103178029db5c85d3 y este no existe","timestamp":"2024-03-15T19:32:34.909Z"}

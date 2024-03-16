@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELECTROKEVIN | Tienda de Tecnologia Virtual</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200">
+  <div class="bg-slate-700 mx-auto px-2 sm:px-6 lg:px-8">
+    <nav class="flex flex-wrap md:flex-row items-center justify-between mx-auto p-2">
+      <a href="/products" class="flex items-center justify-center align-content-center">
+        <h1 class="text-3xl text-slate-400">ELECTROKEVIN</h1>
+      </a>
+      <button data-collapse-toggle="navbar-dropdown" type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-dropdown" aria-expanded="false">
+        <span class="sr-only">Abrir menu principal</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+      <div class="flex hidden w-full justify-center md:block md:w-auto bg-slate-700" id="navbar-dropdown">
+        <ul
+          class="flex flex-col font-medium p-2 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-4 lg:space-x-8 md:mt-0 md:border-0">
+          {{#if user}}
+          <li>
+            <a href="/api/users/premium/{{userID}}" class="text-slate-400 bg-slate-700 block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-400 md:p-0 md:dark:hover:text-neutral-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cambiar rol</a>
+          </li>
+          <li>
+            <a href="/users/control/data" class="text-slate-400 bg-slate-700 justify-center flex block py-2 pl-3 pr-4 text-red rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-neutral-400 md:border-0 md:p-0  dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Users control</a>
+          </li>
+          <li>
+            <a href="/apidocs" class="text-slate-400 bg-slate-700 block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-400 md:p-0 md:dark:hover:text-neutral-400 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">API docs</a>
+          </li>
+          <li>
+            <a href="/products" class="text-slate-400 bg-slate-700 block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-400 md:p-0 md:dark:hover:text-neutral-400 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Products</a>
+          </li>
+          <li class="">
+            <a href="/carts/{{user.cart}}" class="text-slate-400 bg-slate-700 block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-400 md:p-0 md:dark:hover:text-neutral-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">My Cart
+              <span class="w-16 text-left md:text-center text-lime-400">{{cartTotal}}</span>
+            </a>
+          </li>
+          <li>
+            <a href="/current" class="justify-center flex block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent" aria-current="page">
+              <img class="rounded-lg h-full w-6" src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="profile">
+            </a>
+          </li>
+          <li>
+            <a href="/session/logout" class="justify-center flex block py-2 pl-3 pr-4 text-red rounded hover:bg-gray-100 md:hover :bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-red md:dark:hover:bg-transparent">
+              <img class="rounded-lg w-6 h-full" src="https://cdn3.vectorstock.com/i/1000x1000/96/82/logout-icon-vector-21679682.jpg" alt="logout">
+            </a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  {{{ body }}}
+  <footer class="static bottom-0 mt-0 text-center bg-slate-700 lg:text-left">
+    <div class="p-4 text-center text-gray-500">
+      Copyright©2024
+      <h1>Kevin Vasquez Gonzalez</h1>
+    </div>
+    <div class="p-4 text-center">
+      <a class="text-blue-500 text-zinc-500 font-extrabold" href="/chat">CHAT ELECTROKEVIN</a>
+    </div>
+  </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>

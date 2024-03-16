@@ -1,0 +1,102 @@
+<div class="bg-zinc-800">
+    <div class="mx-auto max-w-2xl px-4 pb-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+        <div
+            class=" bg-gray-400 p-6 md:w-1/2 mx-auto my-4 text-slate-700 text-center font-bold rounded-xl border-2 border-style: solid; border-slate-400 text-1xl md:text-3xl">
+            <h1>Bienvenid@: {{user.first_name}} {{user.last_name}}</h1>
+            <h2 class="hidden" id="user_role">{{user.role}}</h2>
+            <p>Rol: {{user.role}}</p> 
+            <label class="hidden" id="cart_id">{{user.cart}}</label>
+        </div>
+        {{#if products}}
+        <div
+            class="min-h-screen grid grid-cols-2 md:gap-x-6 gap-y-10 lg:gap-y-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-4">
+            {{#each products}}
+            <div class="group m-4">
+                <div class="cursor-pointer group aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                    <img src="{{this.thumbnail}}" alt="{{this.title}}." class="border-orange-900 border-solid border-8 h-40 sm:h-64 w-screen object-fill group-hover:opacity-85 border-orange-900">
+                </div>
+                <div>
+                    <h1 class="mt-1 text-sm md:text-lg text-slate-300 text-center">{{this.title}}</h1>
+                    <h3 class="mt-2 text-xs md:text-sm text-slate-300 text-center">Stock: {{this.stock}}</h3>
+                    <p class="mt-1 text-xs md:text-md font-medium text-slate-300 text-center">$ {{this.price}}</p>
+                </div>
+                <div class="ml-8 flex flex-col items-start justify-start">
+                    <button type="button" data-te-ripple-init data-te-ripple-color="light" onClick="addToCart('{{this._id}}')" class="flex items-center sm:inline-block m-2 rounded bg-slate-600 h-6 px-4 m-2 text-xs md:text-sm uppercase leading-normal text-gray-400 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-zinc-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-slate-500 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-slate-500 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">Agregar Producto</button>
+                    <a href="/products/product/{{this._id}}"><button type="button" data-te-ripple-init data-te-ripple-color="light" class="bg-slate-600 text-gray-400 flex items-center sm:inline-block m-2 rounded bg-red-400  h-6 px-4 m-2 text-xs md:text-sm uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-slate-900 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-200 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">Detalles Producto</button></a>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <h1 class="min-h-screen text-center md:mt-12 text-lg md:text-2xl font-bold text-gray-400">No hay productos agregados por el momento...</h1>
+            {{/if}}
+        </div>
+        <div class="mx-auto max-w-2xl px-4 text-center m-6 mt-14">
+            <nav aria-label="Page navigation example">
+                <ul class="inline-flex -space-x-px text-sm">
+                    {{#if paginateInfo.hasPrevPage}}
+                    <li>
+                        <a href="{{paginateInfo.previousLink}}" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 border border-gray-300 rounded-l-lg hover:bg-teal-800 hover:text-slate-950 dark:bg-gray-800 dark:border-gray-700">Anterior</a>
+                    </li>
+                    {{/if}}
+                    {{#each paginateInfo.totalPages}}
+                    <li>
+                        <a href="{{this.link}}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-teal-800 hover:text-slate-950">{{this.page}}</a>
+                    </li>
+                    {{/each}}
+                    {{#if paginateInfo.hasNextPage}}
+                    <li>
+                        <a href="{{paginateInfo.nextLink}}" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 border border-gray-300 rounded-l-lg hover:bg-teal-800 hover:text-slate-950 dark:bg-gray-800 dark:border-gray-700">Siguiente</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script>
+    function swalDelete() {
+        Swal.fire({
+            title: `Producto borrado!!`,
+            text: "Se borró el producto correctamente",
+            icon: "warning"
+        })
+    }
+    function swalAdded() {
+        Swal.fire({
+            title: `Producto agregado!!`,
+            text: "Se agregó el producto correctamente",
+            icon: "success"
+        })
+    }
+    function swalPermission() {
+        Swal.fire({
+            title: `Error de permisos`,
+            text: "No tiene permisos para realizar esta acción",
+            icon: "warning"
+        })
+    }
+    function swalError(error) {
+        Swal.fire({
+            title: `Error al intentar la acción`,
+            text: error,
+            icon: "warning"
+        })
+    }
+    function addToCart(pid) {
+        const role = document.getElementById('user_role').innerHTML
+        if (role === 'admin') return swalPermission()
+        const cart_id = document.getElementById('cart_id').innerHTML
+        if (!cart_id) return swalPermission()
+        fetch(`/api/carts/${cart_id}/product/${pid}`, {
+            method: 'post'
+        })
+            .then(result => result.json())
+            .then(result => {
+                console.log(result)
+                if (result.status === 'error') return swalError(result.error)
+                swalAdded()
+            })
+            .catch(error => swalError(error))
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

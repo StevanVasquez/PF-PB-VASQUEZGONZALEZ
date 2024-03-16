@@ -1,0 +1,88 @@
+<div class="bg-slate-400 sm:h-lvh">
+    <div class="mx-auto max-w-2xl px-4 pb-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+        <h1 class="text-zinc-500 mt-4 text-3xl text-center text-balance font-mono font-bold">Control de usuarios registrados</h1>
+        <div class="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8">
+            <span id="userLog" class="hidden">{{userLog}}</span>
+            {{#each users}}
+            <div class="bg-zinc-700 group sm:p-6 m-4 border-solid border-gray-700 border-8 rounded-lg justify-center p-4 w-full mx-auto flex flex-col justify-center text-balance text-center">
+                <h1 class=" mt-1 text-md font-medium text-zinc-500">{{this.name}}</h1>
+                <h3 id="user_email" class="mt-2 text-sm text-zinc-500">{{this.email}}</h3>
+                <h3 class="mt-2 text-sm font-bold text-zinc-500">{{this.role}}</h3>
+                <div class="p-2 flex flex-col mx-auto">
+                    <div class="p-2">
+                        <select class="bg-slate-400 text-center h-10 select_rol"
+                            onchange="obtenerRol(this)">
+                            <option value="admin" selected>Admin</option>
+                            <option value="premium">Premium</option>
+                            <option value="user">User</option>
+                        </select>
+                        <button class="bg-gray-600 hover:bg-gray-700 text-slate-400 font-bold py-2 px-4 rounded lg:m-2" onClick="updateRol('{{this.email}}')">Editar rol</button>
+                    </div>
+                    <button class="bg-gray-600 hover:bg-gray-700 text-slate-400 font-bold py-2 px-4 rounded" onClick="deleteUser('{{this.email}}')">Borrar user</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<script>
+    let rol
+    function swalDelete() {
+        Swal.fire({
+            title: `Usuario borrado!!`,
+            text: "Se borró el usuario correctamente",
+            icon: "warning"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
+    }
+    function swalUpdate() {
+        Swal.fire({
+            title: `User modificado!!`,
+            text: "Se modificó el rol del user correctamente, se actualizará la página brevemente luego de este aviso.",
+            icon: "success"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.reload();
+            }
+        });
+    }
+    function swalError(error) {
+        Swal.fire({
+            title: `Error al intentar la acción`,
+            text: error,
+            icon: "warning"
+        })
+    }
+    function deleteUser(email) {
+        const email_login = document.getElementById('userLog').innerHTML
+        if (email === email_login) return swalError('No se puede eliminar el usuario logueado')
+        fetch(`/api/users/deleteUser/${email}`, {
+            method: 'delete'
+        })
+            .then(result => result.json())
+            .then(result => {
+                if (result.status === 'error') return swalError(result.error)
+                swalDelete()
+            })
+            .catch(error => alert(error))
+    }
+    function obtenerRol(select) {
+        rol = select.value
+    }
+    function updateRol(email) {
+        if (!rol) rol = 'admin'
+        fetch(`/api/users/updateRol/${email}/${rol}`, {
+            method: 'put'
+        })
+            .then(result => result.json())
+            .then(result => {
+                console.log(result)
+                if (result.status === 'error') return swalError(result.error)
+                swalUpdate()
+            })
+            .catch(error => alert(error))
+    }
+</script>

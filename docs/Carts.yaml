@@ -1,0 +1,243 @@
+paths:
+  /api/carts/{cid}:
+    get:
+      summary: Obtiene un carrito a partir del ID pasado por parámetro.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que desea buscar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El carrito se obtuvo satisfactoriamente de la base de datos!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+    delete:
+      summary: Vacia los productos de un carrito a partir del ID pasado por parámetro.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El carrito se eliminó satisfactoriamente de la base de datos!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+    put:
+      summary: Modificar un carrito a partir del ID pasado por parámetro y datos de body.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que desea modificar.
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      product:
+                        type: string
+                        format: ObjectId
+                        description: ID del producto
+                      quantity:
+                        type: number
+        # content:
+        #   application/json:
+        #     schema:
+        #       $ref: "#/components/requestBodies/cartData"
+      responses:
+        "200":
+          description: El carrito se modificó con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+  /api/carts/:
+    post:
+      summary: Registra un nuevo carrito en la base de datos
+      tags:
+        - Carts
+      responses:
+        "201":
+          description: El nuevo carrito se registró con éxito
+          content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+  /api/carts/{cid}/product/{pid}:
+    delete:
+      summary: Eliminar un producto de un carrito especifico
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que desea modificar.
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que desea eliminar.
+          schema:
+            $type: String
+      responses:
+        "200":
+          description: El producto se eliminó correctamente
+          content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+    post:
+      summary: Agrega un producto al carrito especificado
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto a agregar
+          schema:
+            type: string
+      responses:
+        "201":
+          description: El nuevo producto se agregó con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+    put:
+      summary: Modifica la cantidad agregada de un producto en el carrito pasado por parámetro.
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito que desea modificar.
+          schema:
+            $type: String
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto que desea modificar.
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: number
+      responses:
+        "200":
+          description: El producto se modificó con éxito
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Carrito"
+        "500":
+          description: Error interno en el servidor
+components:
+  schemas:
+    Carrito:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerada por MongoDB
+        products:
+          type: Array
+          description: Productos agregados al carrito
+          $ref: "#/components/schemas/Producto"
+      example:
+        _id: ObjectId("65f31d51d4da1294285f54ba")
+        products: [{ "product": "65f3156d9c2d9cff1a3d7f73", "quantity": 44 }]
+    Producto:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerada por MongoDB
+        title:
+          type: String
+          description: Título del producto
+        description:
+          type: String
+          description: Descripción del producto
+        price:
+          type: Number
+          description: Precio del producto
+        code:
+          type: String
+          description: Código del producto
+        stock:
+          type: Number
+          description: Stock del producto
+        category:
+          type: String
+          description: Categoría del producto
+        thumbnail:
+          type: String
+          description: Imágenes del producto
+        owner:
+          type: String
+          description: Creador del producto
+  requestBodies:
+    cartData:
+      type: object
+      properties:
+        product:
+          type: String
+          description: ID del producto
+        quantity:
+          type: Number
+          description: Cantidad de productos
